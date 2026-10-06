@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):
         self.sevenzipb.move(360,405)
         self.keepassb = QPushButton("Keepass", self.miscgroup)
         self.keepassb.move(470,405)
-        ##style sheets n other stuff
+        ##style sheets n other stuff first section
         self.titlelabel.setStyleSheet("""font-size:20pt;""")
         self.browserlabel.setStyleSheet("""font-size:17pt;""")
         self.vscodeloabel.setStyleSheet("""font-size:17pt;""")
@@ -80,32 +80,63 @@ class MainWindow(QMainWindow):
         self.audael.adjustSize()
         ##button pressed stuff
         def firefox(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command" ,"choco install firefox -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandfire = (
+                "choco install firefox -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandfire}"\''])
         def chrome(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command" ,"choco install chrome -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+           commandchrome = (
+               "choco install chrome -y"
+           )
+           subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandchrome}"\''])
         def brave(self):
-            subprocess.Popen(["powershell",  "-NoProfile", "-Command", "choco install brave -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandbrave = (
+                "choco install brave -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandbrave}"\''])
         def waterfox(self):
-            subprocess.Popen(["powershell",  "-NoProfile", "-Command", "choco install waterfox -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandwater = (
+                "choco install waterfox -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandwater}"\''])
         def librewolf(self):
-            subprocess.Popen(["powershell",  "-NoProfile", "-Command", "choco install librewolf -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandlibre = (
+                "choco install librewolf -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandlibre}"\''])
         def choco(self):
            command = (
                "Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://community.chocolatey.org/install.ps1 -UseBasicParsing | iex"
            )
            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{command}"\''])
         def vscodeide(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install vscode.install -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            subprocess.Popen(["powershell", "-NoProfile", "-Command", f'Start-Process powershell.exe -Verb RunAs', "choco install vscode.install -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
         def vscodiumide(self):
-                subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install vscodium --version=1.104.36664 -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+                commandvscodium = (
+                    "choco install vscodium --version=1.104.36664 -y"
+                )
+                subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandvscodium}"\''])
         def audacity(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install audacity -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandauda = (
+                "choco install audacity -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandauda}"\''])
         def vlc(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install vlc -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandvlc = (
+                "choco install vlc"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandvlc}"\''])
         def sevenzip(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install 7zip --version=26.0.0 -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+            commandzip = (
+                "choco install 7zip --version=26.0.0 -y"
+            )
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandzip}"\''])
         def keepass(self):
-            subprocess.Popen(["powershell", "-NoProfile", "-Command", "choco install keepass -y"], creationflags=subprocess.CREATE_NEW_CONSOLE)
+           commandpass = (
+             "choco install keepass -y"
+           )
+           subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandpass}"\''])
+            
         ##button press idk now
         self.firebtn.clicked.connect(firefox)
         self.chromebtn.clicked.connect(chrome)
@@ -118,6 +149,71 @@ class MainWindow(QMainWindow):
         self.audacityb.clicked.connect(audacity)
         self.sevenzipb.clicked.connect(sevenzip)
         self.keepassb.clicked.connect(keepass)
+
+        ##second section
+
+        ##drawing label
+        self.drawingl = QLabel("Drawing Apps", self)
+        self.drawingl.setAlignment(Qt.AlignCenter)
+        self.drawingl.setGeometry(0, 0, 850, 500)
+        self.drawingl.move(0,-150)
+
+        ##bottom buttons
+        self.firstsectiob = QPushButton("1", self)
+        self.firstsectiob.move(300,450)
+        self.secondsectiob = QPushButton("2", self)
+        self.secondsectiob.move(450,450)
+
+        ##buttons
+        self.kritab = QPushButton("Krita", self)
+        self.kritab.setGeometry(375,155,100,30)
+
+        ##stlyesheet second section
+        self.drawingl.setStyleSheet("""font-size:17pt;""")
+
+        ##hide when app loaded
+        self.drawingl.hide()
+        self.kritab.hide()
+
+        ##way more stuff
+        def secondsection():
+                    self.vscodeloabel.hide()
+                    self.miscl.hide()
+                    self.browsergroup.hide()
+                    self.browserlabel.hide()
+                    self.audael.hide()
+                    self.miscgroup.hide()
+                    self.browsergroup.hide()
+                    self.codegroup.hide()
+                    self.audacityb.hide()
+                    self.kritab.show()
+                    self.drawingl.show()
+        def firstsection():
+                    self.vscodeloabel.show()
+                    self.miscl.show()
+                    self.browsergroup.show()
+                    self.browserlabel.show()
+                    self.audael.show()
+                    self.miscgroup.show()
+                    self.browsergroup.show()
+                    self.codegroup.show()
+                    self.audacityb.show()
+                    self.kritab.hide()
+                    self.drawingl.hide()
+
+
+
+
+        ##install stuff again
+        def comkrita(self):
+            commandkrita = "choco install krita --version=5.2.16"
+            
+            subprocess.Popen(["powershell", "-NoProfile", "-Command",  f'Start-Process powershell.exe -Verb RunAs -ArgumentList \'-Noprofile -NoExit -Command "{commandkrita}"\''])
+        ##connect bottom buttons
+        self.firstsectiob.clicked.connect(firstsection)
+        self.secondsectiob.clicked.connect(secondsection)
+        self.kritab.clicked.connect(comkrita)
+        
         pass
 
 app = QApplication(sys.argv)
